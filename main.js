@@ -21,6 +21,7 @@ function addTaskBtnHandler(event) {
       checkBoxInput.setAttribute(key, inputAttribute[key]);
     }
     taskDescription.innerText = task.value;
+    taskDescription.classList.add('task');
 
     newTaskContainer.classList.add(`task-${taskId}`);
     newTaskContainer.append(checkBoxInput);

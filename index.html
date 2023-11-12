@@ -4,21 +4,24 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <title>Todo App</title>
   </head>
   <body>
     <main>
       <h1>Todo Tasks</h1>
-      <label for="task-to-add" aria-label="input-field"></label>
-      <input
-        type="text"
-        id="task-to-add"
-        name="task-to-add"
-        placeholder="Walk the dog..."
-      />
-      <button id="add-task-btn">Add task</button>
+      <div class="task-container">
+        <label for="task-to-add" aria-label="input-field"></label>
+        <input
+          type="text"
+          id="task-to-add"
+          name="task-to-add"
+          placeholder="Walk the dog..."
+        />
+        <button id="add-task-btn">Add task</button>
+        <section id="list-of-tasks"></section>
+      </div>
     </main>
-    <section id="list-of-tasks"></section>
 
     <script type="module" src="/main.js"></script>
   </body>
