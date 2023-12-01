@@ -1,14 +1,20 @@
 let taskId = 0;
 
+const addTaskButton = document.querySelector('#add-task-btn');
+const taskInput = document.querySelector('#task-to-add');
+const listOfTasks = document.querySelector('#list-of-tasks');
+
 function addTaskBtnHandler(event) {
   if (event.type === 'click' || event.key === 'Enter') {
-    const listOfTasks = document.querySelector('#list-of-tasks');
     const task = document.querySelector('#task-to-add');
     const newTaskContainer = document.createElement('article');
     const checkBoxInput = document.createElement('input');
     const taskDescription = document.createElement('p');
 
-    if (task.value === '') return;
+    if (task.value === '') {
+      alert('No task was added.');
+      return;
+    }
 
     const inputAttribute = {
       type: 'checkbox',
@@ -30,13 +36,29 @@ function addTaskBtnHandler(event) {
     listOfTasks.append(newTaskContainer);
     task.value = '';
 
-    // increment task id to unique identify another task later
+    // increment task id to uniquely identify another task later
     taskId += 1;
   }
 }
 
-const addTaskButton = document.querySelector('#add-task-btn');
-const taskInput = document.querySelector('#task-to-add');
+function handleToDoChecked(event) {
+  const taskElementNode = event.target.nextElementSibling; // grabs the p element describing the task
+  const taskText = taskElementNode.innerText;
+  const isThereStrikeout = taskElementNode.children.length;
+
+  // if there is no strikeout on the element, add it, else remove it
+  if (isThereStrikeout === 0) {
+    const strikeoutElement = document.createElement('s');
+    taskElementNode.innerText = '';
+    strikeoutElement.innerText = taskText;
+    taskElementNode.append(strikeoutElement);
+  } else {
+    const strikeThroughElement = taskElementNode.firstElementChild;
+    strikeThroughElement.remove();
+    taskElementNode.innerText = taskText;
+  }
+}
 
 addTaskButton.addEventListener('click', addTaskBtnHandler);
 taskInput.addEventListener('keydown', addTaskBtnHandler);
+listOfTasks.addEventListener('change', handleToDoChecked);
