@@ -38,16 +38,16 @@ header {
   flex-grow: 1;
 }
 
+.add-task-btn {
+  width: var(--spacing-unit-x5);
+}
+
 article[class='task'] {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: var(--spacing-unit) 0;
-}
-
-.add-task-btn {
-  width: var(--spacing-unit-x5);
 }
 
 .task-info {
