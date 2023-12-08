@@ -19,8 +19,8 @@ header {
 }
 
 .task-container {
-  display: flex;
-  justify-content: center;
+  max-width: 500px;
+  margin: auto;
 }
 
 .task-container > div {
@@ -29,6 +29,7 @@ header {
 
 .task-input-container {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--spacing-unit-half);
 }
@@ -40,6 +41,8 @@ header {
 article[class='task'] {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   margin: var(--spacing-unit) 0;
 }
 
@@ -50,8 +53,10 @@ article[class='task'] {
 .task-info {
   display: inline-block;
   font-size: calc(var(--spacing-unit-x2) * 0.8);
+  margin-left: var(--spacing-unit-half);
 }
 
 .delete-task-btn {
   width: var(--spacing-unit-x5);
+  flex-shrink: 0;
 }
