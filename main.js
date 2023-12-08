@@ -4,12 +4,25 @@ const addTaskButton = document.querySelector('#add-task-btn');
 const taskInput = document.querySelector('#task-to-add');
 const listOfTasks = document.querySelector('#list-of-tasks');
 
+function createDeleteButton() {
+  const deleteTaskButton = document.createElement('button');
+  deleteTaskButton.setAttribute('type', 'button');
+  deleteTaskButton.className = 'delete-task-btn';
+  deleteTaskButton.textContent = 'Delete';
+
+  return deleteTaskButton;
+}
+
 function addTaskBtnHandler(event) {
   if (event.type === 'click' || event.key === 'Enter') {
     const task = document.querySelector('#task-to-add');
     const newTaskContainer = document.createElement('article');
+    const taskInfoContainer = document.createElement('div');
     const checkBoxInput = document.createElement('input');
     const taskDescription = document.createElement('p');
+    const deleteTaskButton = createDeleteButton();
+
+    taskInfoContainer.className = 'task-info-container';
 
     if (task.value === '') {
       alert('No task was added.');
@@ -30,8 +43,10 @@ function addTaskBtnHandler(event) {
     taskDescription.classList.add('task');
 
     newTaskContainer.classList.add(`task-${taskId}`);
-    newTaskContainer.append(checkBoxInput);
-    newTaskContainer.append(taskDescription);
+    taskInfoContainer.append(checkBoxInput);
+    taskInfoContainer.append(taskDescription);
+    newTaskContainer.append(taskInfoContainer);
+    newTaskContainer.append(deleteTaskButton);
 
     listOfTasks.append(newTaskContainer);
     task.value = '';
