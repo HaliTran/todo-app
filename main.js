@@ -1,5 +1,3 @@
-let taskId = 0;
-
 const addTaskButton = document.querySelector('#add-task-btn');
 const taskInput = document.querySelector('#task-to-add');
 const listOfTasks = document.querySelector('#list-of-tasks');
@@ -31,7 +29,7 @@ function addTaskBtnHandler(event) {
 
     const inputAttribute = {
       type: 'checkbox',
-      name: `task-${taskId}`,
+      name: `task`,
       value: task.value,
       'aria-label': task.value,
     };
@@ -40,9 +38,9 @@ function addTaskBtnHandler(event) {
       checkBoxInput.setAttribute(key, inputAttribute[key]);
     }
     taskDescription.innerText = task.value;
-    taskDescription.classList.add('task');
+    taskDescription.classList.add('task-info');
 
-    newTaskContainer.classList.add(`task-${taskId}`);
+    newTaskContainer.classList.add('task');
     taskInfoContainer.append(checkBoxInput);
     taskInfoContainer.append(taskDescription);
     newTaskContainer.append(taskInfoContainer);
@@ -50,9 +48,6 @@ function addTaskBtnHandler(event) {
 
     listOfTasks.append(newTaskContainer);
     task.value = '';
-
-    // increment task id to uniquely identify another task later
-    taskId += 1;
   }
 }
 
@@ -74,6 +69,15 @@ function handleToDoChecked(event) {
   }
 }
 
+function handleDeleteTask(event) {
+  if (event.target.tagName !== 'BUTTON') {
+    return;
+  }
+  const taskElementNode = event.target.parentElement;
+  taskElementNode.remove();
+}
+
 addTaskButton.addEventListener('click', addTaskBtnHandler);
 taskInput.addEventListener('keydown', addTaskBtnHandler);
 listOfTasks.addEventListener('change', handleToDoChecked);
+listOfTasks.addEventListener('click', handleDeleteTask);
