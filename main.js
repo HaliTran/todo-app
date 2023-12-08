@@ -1,5 +1,5 @@
 const addTaskButton = document.querySelector('.add-task-btn');
-const taskInput = document.querySelector('.task-to-add');
+const taskInput = document.querySelector('#task-to-add');
 const listOfTasks = document.querySelector('.list-of-tasks');
 
 function createDeleteButton() {
@@ -13,7 +13,7 @@ function createDeleteButton() {
 
 function addTaskBtnHandler(event) {
   if (event.type === 'click' || event.key === 'Enter') {
-    const task = document.querySelector('.task-to-add');
+    const task = document.querySelector('#task-to-add');
     const newTaskContainer = document.createElement('article');
     const taskInfoContainer = document.createElement('div');
     const checkBoxInput = document.createElement('input');

@@ -13,30 +13,38 @@
   padding: 0;
 }
 
-main {
+header {
+  margin-top: var(--spacing-unit-x3);
+  text-align: center;
+}
+
+.task-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: var(--spacing-unit);
+}
+
+.task-container > div {
+  flex-basis: 20%;
+}
+
+.task-input-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-unit-half);
+}
+
+.task-input-container > input {
+  flex-grow: 1;
 }
 
 article[class='task'] {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin: var(--spacing-unit) 0;
 }
 
 .add-task-btn {
   width: var(--spacing-unit-x5);
-}
-
-.list-of-tasks {
-  margin-top: calc(var(--spacing-unit) * 0.7);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--spacing-unit-half);
 }
 
 .task-info {
